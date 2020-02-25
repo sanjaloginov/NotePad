@@ -23,7 +23,10 @@ public class Main {
                     listRecords();
                     break;
                 case "delete":
-                    deleteRecord();
+                case "del":
+                case "remove":
+                case "rm":
+                    removeRecord();
                     break;
                 default:
                     System.out.println("Wrong command");
@@ -31,21 +34,47 @@ public class Main {
         }
     }
 
-    private static void deleteRecord() {
-        Record.askId();
+    private static void removeRecord() {
+        var id = Asker.askInt("Enter ID to remove");
+        records.remove(id);
     }
 
     private static void listRecords() {
-        List<Record> all = records.getAllRecords();
+        var all = records.getAllRecords();
         for (var r : all) {
             System.out.println(r);
         }
     }
 
-    private static void createRecord() {
-        var r = new Record();
+    private static void addRecord(Record r) {
         r.askInfo();
         records.add(r);
+        System.out.println("Created " + r);
+    }
+
+    private static void createRecord() {
+        var type = Asker.askString("Record type");
+        switch (type) {
+            case "person":
+                addRecord(new Person());
+                break;
+            case "book":
+                addRecord(new Book());
+                break;
+            case "note":
+                addRecord(new Note());
+                break;
+            case "alarm":
+               addRecord(new Alarm());
+                break;
+            case "reminder":
+                addRecord(new Reminder());
+                break;
+            case "trolleybus":
+                addRecord(new Trolleybus());
+            default:
+                System.out.println("Wrong record type");
+        }
     }
 
     private static void showHelp() {
