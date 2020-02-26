@@ -1,7 +1,5 @@
 package lv.tsi.javacourses.notepad;
 
-import java.util.List;
-
 public class Main {
     private static RecordDAO records = new RecordDAO();
 
@@ -70,8 +68,18 @@ public class Main {
             case "reminder":
                 addRecord(new Reminder());
                 break;
+            case "public transport":
+                addRecord(new PublicTransport());
+                break;
+            case "bus":
+                addRecord(new Bus());
+                break;
+            case "tram":
+                addRecord(new Tram());
+                break;
             case "trolleybus":
                 addRecord(new Trolleybus());
+                break;
             default:
                 System.out.println("Wrong record type");
         }

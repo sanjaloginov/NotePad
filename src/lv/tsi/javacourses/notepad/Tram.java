@@ -1,32 +1,43 @@
 package lv.tsi.javacourses.notepad;
 
-public class Trolleybus extends PublicTransport {
-    private String generatorType;
+public class Tram extends PublicTransport {
+    private int gauge;
+    private int unitCount;
 
-    public String getGeneratorType() {
-        return generatorType;
+    public int getGauge() {
+        return gauge;
     }
 
-    public void setGeneratorType(String generatorType) {
-        this.generatorType = generatorType;
+    public void setGauge(int gauge) {
+        this.gauge = gauge;
+    }
+
+    public int getUnitCount() {
+        return unitCount;
+    }
+
+    public void setUnitCount(int unitCount) {
+        this.unitCount = unitCount;
     }
 
     @Override
     public void askInfo() {
         super.askInfo();
-        generatorType = Asker.askString("Generator type");
+        gauge = Asker.askInt("Gauge");
+        unitCount = Asker.askInt("Unit Count");
     }
 
     @Override
     public String toString() {
-        return "Trolleybus{" +
+        return "Tram{" +
                 "id=" + getId() +
                 ", manufacturer='" + getManufacturer() + '\'' +
                 ", model='" + getModel() + '\'' +
                 ", vin='" + getVin() + '\'' +
                 ", year=" + getYear() +
-                ", generatorType='" + generatorType + '\'' +
                 ", length='" + getLength() + '\'' +
+                ", gauge=" + gauge +
+                ", unitCount=" + unitCount +
                 ", bortNumber='" + getBortNumber() + '\'' +
                 ", route='" + getRoute() + '\'' +
                 '}';
