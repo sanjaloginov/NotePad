@@ -1,4 +1,6 @@
-package lv.tsi.javacourses.notepad;
+package lv.tsi.javacourses.notepad.records;
+
+import lv.tsi.javacourses.notepad.Asker;
 
 public class Tram extends PublicTransport {
     private int gauge;
@@ -28,18 +30,14 @@ public class Tram extends PublicTransport {
     }
 
     @Override
-    public String toString() {
-        return "Tram{" +
-                "id=" + getId() +
-                ", manufacturer='" + getManufacturer() + '\'' +
-                ", model='" + getModel() + '\'' +
-                ", vin='" + getVin() + '\'' +
-                ", year=" + getYear() +
-                ", length='" + getLength() + '\'' +
+    public String stringContent() {
+        return super.stringContent() +
                 ", gauge=" + gauge +
-                ", unitCount=" + unitCount +
-                ", bortNumber='" + getBortNumber() + '\'' +
-                ", route='" + getRoute() + '\'' +
-                '}';
+                ", unitCount=" + unitCount;
+    }
+
+    @Override
+    protected String type() {
+        return "Tram";
     }
 }

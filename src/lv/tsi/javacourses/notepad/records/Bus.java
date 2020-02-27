@@ -1,4 +1,6 @@
-package lv.tsi.javacourses.notepad;
+package lv.tsi.javacourses.notepad.records;
+
+import lv.tsi.javacourses.notepad.Asker;
 
 public class Bus extends PublicTransport {
     private String engineType;
@@ -28,18 +30,14 @@ public class Bus extends PublicTransport {
     }
 
     @Override
-    public String toString() {
-        return "Bus{" +
-                "id=" + getId() +
-                ", manufacturer='" + getManufacturer() + '\'' +
-                ", model='" + getModel() + '\'' +
-                ", vin='" + getVin() + '\'' +
-                ", year=" + getYear() +
+    public String stringContent() {
+        return super.stringContent() +
                 ", engineType=" + engineType + '\'' +
-                ", length='" + getLength() + '\'' +
-                ", licensePlate='" + licensePlate + '\'' +
-                ", bortNumber='" + getBortNumber() + '\'' +
-                ", route='" + getRoute() + '\'' +
-                '}';
+                ", licensePlate='" + licensePlate + '\'';
+    }
+
+    @Override
+    protected String type() {
+        return "Bus";
     }
 }

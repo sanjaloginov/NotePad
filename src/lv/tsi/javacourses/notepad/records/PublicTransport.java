@@ -1,6 +1,8 @@
-package lv.tsi.javacourses.notepad;
+package lv.tsi.javacourses.notepad.records;
 
-public class PublicTransport extends Record {
+import lv.tsi.javacourses.notepad.Asker;
+
+public class PublicTransport extends AbstractRecord {
     private String manufacturer;
     private String model;
     private String vin;
@@ -77,9 +79,8 @@ public class PublicTransport extends Record {
     }
 
     @Override
-    public String toString() {
-        return "PublicTransport{" +
-                "id=" + getId() +
+    public String stringContent() {
+        return super.stringContent() +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", model='" + model + '\'' +
                 ", vin='" + vin + '\'' +
@@ -88,5 +89,10 @@ public class PublicTransport extends Record {
                 ", bortNumber='" + bortNumber + '\'' +
                 ", route='" + route + '\'' +
                 '}';
+    }
+
+    @Override
+    protected String type() {
+        return "PublicTransport";
     }
 }
