@@ -16,6 +16,16 @@ public class Book extends AbstractRecord {
         pageCount = Asker.askInt("Page count", 2, Integer.MAX_VALUE);
     }
 
+    @Override
+    public boolean contains(String substr) {
+        var tmp = substr.toLowerCase();
+        return super.contains(substr)
+                || title.toLowerCase().contains(tmp)
+                || author.toLowerCase().contains(tmp)
+                || isbn.toLowerCase().contains(tmp)
+                || String.valueOf(pageCount).contains(substr);
+    }
+
     public String getTitle() {
         return title;
     }

@@ -28,8 +28,31 @@ public class Main {
                 case "rm":
                     removeRecord();
                     break;
+                case "search":
+                    searchRecords();
+                    break;
+                case "expired":
+                    showExpired();
+                    break;
+                case "dismiss":
+                    dismissExpirable();
+                    break;
                 default:
                     System.out.println("Wrong command");
+            }
+        }
+    }
+
+    private static void dismissExpirable() {
+        int id = Asker.askInt("Enter ID to dismiss");
+        for (var r : records.getAllRecords()) {
+            if (r.getId() == id) {
+                if (r instanceof Expirable) {
+                    Expirable e = (Expirable) r;
+                    e.dismiss();
+                } else {
+                    System.out.println("It isn't expirable record");
+                }
             }
         }
     }
@@ -84,6 +107,26 @@ public class Main {
                 break;
             default:
                 System.out.println("Wrong record type");
+        }
+    }
+
+    private static void showExpired() {
+        for (var r : records.getAllRecords()) {
+            if (r instanceof Expirable) {
+                Expirable e = (Expirable) r;
+                if (e.isExpired()) {
+                    System.out.println(r);
+                }
+            }
+        }
+    }
+
+    private static void searchRecords() {
+        var substr = Asker.askString("Enter substring to find");
+        for (var r : records.getAllRecords()) {
+            if (r.contains(substr)) {
+                System.out.println(r);
+            }
         }
     }
 
