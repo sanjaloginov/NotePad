@@ -11,14 +11,19 @@ public class Asker {
 
     public static String askString(String msg) {
         System.out.print(msg + ": ");
-        String tmp = scan.next();
+        var result = new StringBuilder(100);
+        var tmp = scan.next();
+        result.append(tmp);
         if (tmp.startsWith("\"")) {
             while (!tmp.endsWith("\"")) {
-                tmp = tmp + " " + scan.next();
+                tmp = scan.next();
+                result.append(' ').append(tmp);
             }
-            tmp = tmp.substring(1, tmp.length()-1);
+            //tmp = result.toString();
+            //tmp = tmp.substring(1, tmp.length()-1);
+            result.deleteCharAt(0).deleteCharAt(result.length()-1);
         }
-        return tmp;
+        return result.toString();
     }
 
     public  static int askInt(String msg, int min, int max) {
