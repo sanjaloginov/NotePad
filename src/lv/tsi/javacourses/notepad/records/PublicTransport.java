@@ -79,6 +79,19 @@ public class PublicTransport extends AbstractRecord {
     }
 
     @Override
+    public boolean contains(String substr) {
+        var tmp = substr.toLowerCase();
+        return super.contains(substr)
+                || manufacturer.toLowerCase().contains(tmp)
+                || model.toLowerCase().contains(tmp)
+                || vin.toLowerCase().contains(tmp)
+                || String.valueOf(year).contains(substr)
+                || length.toLowerCase().contains(tmp)
+                || bortNumber.toLowerCase().contains(tmp)
+                || route.toLowerCase().contains(tmp);
+    }
+
+    @Override
     public String stringContent() {
         return super.stringContent() +
                 ", manufacturer='" + manufacturer + '\'' +

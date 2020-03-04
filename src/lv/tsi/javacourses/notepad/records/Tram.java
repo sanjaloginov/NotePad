@@ -30,6 +30,13 @@ public class Tram extends PublicTransport {
     }
 
     @Override
+    public boolean contains(String substr) {
+        return super.contains(substr)
+                || String.valueOf(gauge).contains(substr)
+                || String.valueOf(unitCount).contains(substr);
+    }
+
+    @Override
     public String stringContent() {
         return super.stringContent() +
                 ", gauge=" + gauge +

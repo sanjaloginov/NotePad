@@ -20,6 +20,13 @@ public class Trolleybus extends PublicTransport {
     }
 
     @Override
+    public boolean contains(String substr) {
+        var tmp = substr.toLowerCase();
+        return super.contains(substr)
+                || generatorType.toLowerCase().contains(tmp);
+    }
+
+    @Override
     public String stringContent() {
         return super.stringContent() +
                 ", generatorType='" + generatorType + '\'';

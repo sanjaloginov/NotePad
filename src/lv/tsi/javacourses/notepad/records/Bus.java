@@ -30,6 +30,14 @@ public class Bus extends PublicTransport {
     }
 
     @Override
+    public boolean contains(String substr) {
+        var tmp = substr.toLowerCase();
+        return super.contains(substr)
+                || engineType.toLowerCase().contains(tmp)
+                || licensePlate.toLowerCase().contains(tmp);
+    }
+
+    @Override
     public String stringContent() {
         return super.stringContent() +
                 ", engineType=" + engineType + '\'' +

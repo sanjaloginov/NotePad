@@ -19,6 +19,13 @@ public class Note extends AbstractRecord {
     }
 
     @Override
+    public boolean contains(String substr) {
+        var tmp = substr.toLowerCase();
+        return super.contains(substr)
+                || text.toLowerCase().contains(tmp);
+    }
+
+    @Override
     public String stringContent() {
         return super.stringContent() +
                 " text='" + text + '\'';
