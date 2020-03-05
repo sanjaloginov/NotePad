@@ -8,7 +8,7 @@ import java.time.LocalTime;
 
 public class Alarm extends Note implements Expirable {
     private LocalTime time;
-    private LocalDate d;
+    private LocalDate dismissedDate;
 
     public LocalTime getTime() {
         return time;
@@ -43,7 +43,7 @@ public class Alarm extends Note implements Expirable {
 
     @Override
     public boolean isExpired() {
-        if ( d != null && d.equals(LocalDate.now())) {
+        if ( dismissedDate != null && dismissedDate.equals(LocalDate.now())) {
             return false;
         }
         var now = LocalTime.now();
@@ -52,6 +52,6 @@ public class Alarm extends Note implements Expirable {
 
     @Override
     public void dismiss() {
-        d = LocalDate.now();
+        dismissedDate = LocalDate.now();
     }
 }
